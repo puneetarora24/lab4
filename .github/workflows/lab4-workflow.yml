@@ -6,6 +6,8 @@ on:
     
 jobs:
     npm-package:
+      permissions:
+        package: write
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Repository
@@ -17,3 +19,6 @@ jobs:
             registry-url: https://npm.pkg.github.com/ 
         - name: Install npm dependencies
           run: npm install
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             
